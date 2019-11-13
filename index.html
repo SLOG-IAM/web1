@@ -38,12 +38,31 @@
   </head>
   <body>
     <h1><a href="index.html">SLOG</a></h1>
-    <input type="button" value="night" onclick="document.querySelector('body').style.backgroundColor='black';
-    document.querySelector('body').style.color='white';
+    <input type="button" value="night" onclick="
+      var target = document.querySelector('body');
+      if (this.value==='night'){
+        target.style.backgroundColor='black';
+        target.style.color='white';
+        this.value='day';
+
+        var alist = document.querySelectorAll('a');
+        for (var i=0;i < alist.length ; i++){
+          alist[i].style.color='powderblue';
+        }
+
+      }
+      else{
+        target.style.backgroundColor='white';
+        target.style.color='black';
+        this.value='night';
+        var alist = document.querySelectorAll('a');
+        for (var i=0;i < alist.length ; i++){
+          alist[i].style.color='blue';
+        }
+
+
+      }
     ">
-    <input type="button" value="day" onclick="document.querySelector('body').style.backgroundColor='white';
-    document.querySelector('body').style.color='black';
-    ">                                            
     <div id="grid">
       <ol>
         <li><a href="1.html">Study LOG</a></li>
@@ -60,9 +79,20 @@
       </div>
     </div>
 
+    <center><div id="container" style=" width: 700px; height: 380px; position: relative;">
+        <div id="framearea" style="  width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1;">
+          <iframe id="scoreboard" src="https://giphy.com/embed/fhAwk4DnqNgw8"
+            width=100% height=100% frameborder=100%
+            class="giphy-embed" scrolling="no" allowfullscreen="yes"></iframe>
+        </div>
+        <div id="framecover" style="  width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10;">
+        </div>
+    </div></center>
+
+
+
     <div id="disqus_thread"></div>
     <script>
-
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
